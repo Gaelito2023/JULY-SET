@@ -1,3 +1,3 @@
-<h1> RahulShettyAcademy.com Learning</h1>
-<h2> Learn QA Automation tools + Devops Tools CI/CD pipelines in course from Scratch</h2>
-<h2> Good Luck and we are almost done with the course.Thankyou</h2>
+<h1> This is TTC Mobile World, Testing things out</h1>
+<h2> There's really nothing to type here as this is only a test </h2>
+<h2> Congrats on completetion of your training </h2>
