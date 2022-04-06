@@ -1,4 +1,4 @@
-<h1> Hello everyone, welcome to our sample homepage to demonstrate that this code works </h1>
-<h2> congratulations everyone on the completion of your training today </h2>
+<h1> This is the final lap of our practice of DevOps. </h1>
+<h2> Now, we shall be setting up the CI/CD pipeline. </h2>
 
 
