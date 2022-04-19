@@ -85,7 +85,7 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: "ssh_agent", keyFileVariable: 'keyfile')]){
                     sh "scp -i ${keyfile} -o StrictHostKeyChecking=no dockerfile ubuntu@18.206.173.255:/home/ubuntu"
-                    sh "scp -i ${keyfile} -o StrictHostKeyChecking=no playbook1.yaml ubuntu@18.206.173.255:/home/ubuntu"
+                    sh "scp -i ${keyfile} -o StrictHostKeyChecking=no create-container-image.yaml ubuntu@18.206.173.255:/home/ubuntu"
                 }
             }
             
