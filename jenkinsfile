@@ -85,8 +85,8 @@ pipeline {
             steps {
                   ssh_agent(['ssh_agent']) {
                        
-                        sh "scp -i -o StrictHostKeyChecking=no dockerfile ubuntu@18.206.173.255:/home/ubuntu"
-                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ubuntu@18.206.173.255:/home/ubuntu"
+                        sh "scp -i ${keyfile} -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no dockerfile ubuntu@18.206.173.255:/home/ubuntu"
+                        sh "scp -i ${keyfile} -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no create-container-image.yaml ubuntu@18.206.173.255:/home/ubuntu"
                     }
                 }
             
