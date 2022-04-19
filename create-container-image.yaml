@@ -1,0 +1,43 @@
+#Create Custom Container Image, and Push it to DockerHub Registry
+---
+- hosts: localhost
+  tasks: 
+  - name: Pull .war artifact from Artifactory
+    become: true
+    get_url:
+      url: http://3.238.35.39:8082/artifactory/classwork1-libs-release-local/com/theITern/theITern/1.0-RELEASE/theITern-1.0-RELEASE.war
+      dest: /home/ubuntu
+      url_username: admin
+      url_password: Akin1234#
+
+  - name: Rename .war Artifact
+    command: mv theITern-1.0-RELEASE.war webapp.war
+  
+  - name: Pull Tomcat  Container Image
+    docker_image:
+      name: tomcat:latest
+      source: pull
+
+  - name: Build image and with build args
+    docker_image:
+      name: class_app
+      build:
+        path: /home/ubuntu
+        pull: no
+        args:
+          listen_port: 8080
+      source: build
+
+  - name: Log into DockerHub
+    docker_login:
+     username: akinaregbesola
+     password: Akin1234#
+
+    
+  - name: Push to docker hub
+    docker_image:
+      name: class_app
+      repository: akinaregbesola/theitern_class_project:latest2
+      push: yes
+      source: local
+

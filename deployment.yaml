@@ -1,0 +1,23 @@
+#Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: class-deploy2
+  labels:
+    app: class-app2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: class-app2
+  template:
+    metadata:
+      labels:
+        app: class-app2
+    spec:
+      containers:
+      - name: customcontainer
+        image: akinaregbesola/theitern_class_project:latest2
+        ports:
+        - containerPort: 8080
+
