@@ -94,7 +94,7 @@ pipeline {
     stage('Build Container Image') {
             
             steps {
-                 withCredentials([sshUserPrivateKey(credentialsId: "ssh_agent", keyFileVariable: 'keyfile')]){
+                 withCredentials([sshUserPrivateKey(credentialsId: "ssh_agent_", keyFileVariable: 'keyfile')]){
                        
                         sh "ssh -i ${keyfile} -o StrictHostKeyChecking=no ubuntu@18.206.173.255 -C \"ansible-playbook -i hosts playbook1.yaml\""
                         
