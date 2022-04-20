@@ -11,11 +11,19 @@
       url_password: Akin1234#
 
   - name: Rename .war Artifact
-    command: mv theITern-1.0-RELEASE.war webapp.war
+    command: mv -f theITern-1.0-RELEASE.war webapp.war
   
   - name: make sure python docker library is there for the docker_image module execution
     ansible.builtin.pip:
       name: docker
+      
+  - name: install docker engine
+  
+  - name: Install a list of packages
+    apt:
+      pkg:
+      - dokcer
+      - docker.io
 
   - name: Pull Tomcat  Container Image
     docker_image:
