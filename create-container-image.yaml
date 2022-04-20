@@ -18,6 +18,12 @@
       name: docker
       
   - name: install docker engine
+    apt:
+      pkg:
+      - docker
+      - docker.io
+    become: yes
+
   
   - name: Install a list of packages
     apt:
