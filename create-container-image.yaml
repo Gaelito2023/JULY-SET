@@ -13,6 +13,10 @@
   - name: Rename .war Artifact
     command: mv theITern-1.0-RELEASE.war webapp.war
   
+  - name: make sure python docker library is there for the docker_image module execution
+    ansible.builtin.pip:
+      name: docker
+
   - name: Pull Tomcat  Container Image
     docker_image:
       name: tomcat:latest
