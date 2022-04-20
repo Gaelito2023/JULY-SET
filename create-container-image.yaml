@@ -24,13 +24,6 @@
       - docker.io
     become: yes
 
-  
-  - name: Install a list of packages
-    apt:
-      pkg:
-      - dokcer
-      - docker.io
-
   - name: Pull Tomcat  Container Image
     docker_image:
       name: !unsafe tomcat:latest
