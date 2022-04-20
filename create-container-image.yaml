@@ -19,8 +19,9 @@
 
   - name: Pull Tomcat  Container Image
     docker_image:
-      name: tomcat:latest
+      name: !unsafe tomcat:latest
       source: pull
+      force_tag: yes
 
   - name: Build image and with build args
     docker_image:
