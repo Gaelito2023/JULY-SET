@@ -96,15 +96,7 @@ pipeline {
 
             steps {
                   sshagent(['ssh_key']) {
-<<<<<<< HEAD
-
-                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@18.206.173.255 -C \"sudo ansible-playbook playbook1.yaml\""
-
-=======
-                       
                         sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@18.206.173.255 -C \"sudo ansible-playbook -i hosts create-container-image.yaml\""
-                        
->>>>>>> c4266180f4f8819c1e4135551fd2f960d8b24651
                     }
                 }
 
