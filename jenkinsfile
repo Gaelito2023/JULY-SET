@@ -91,24 +91,26 @@ pipeline {
                 }
             
         } 
+
     stage('Build Container Image') {
             
             steps {
-                 withCredentials([sshUserPrivateKey(credentialsId: "ssh_agent_", keyFileVariable: 'keyfile')]){
+                  sshagent(['ssh_key']) {
                        
-                        sh "ssh -i ${keyfile} -o StrictHostKeyChecking=no ubuntu@18.206.173.255 -C \"ansible-playbook -i hosts create-container-image.yaml\""
+                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@18.206.173.255 -C \"sudo ansible-playbook create-container-image.yaml\""
                         
                     }
                 }
             
         } 
-    stage('Copy Deployent & Service Defination to K8s Master') {
+
+    stage('Copy Deployment & Service Defination to K8s Master') {
             
             steps {
-                  withCredentials([sshUserPrivateKey(credentialsId: "ssh_agent", keyFileVariable: 'keyfile')]){
+                  sshagent(['ssh_key']) {
                        
-                        sh "scp -i ${keyfile} -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no deployment.yaml ubuntu@18.206.173.255:/home/ubuntu"
-                        sh "scp -i ${keyfile} -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no service.yaml ubuntu@18.206.173.255:/home/ubuntu"
+                        sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no create-k8s-deployment.yaml ubuntu@54.236.58.176:/home/ubuntu"
+                        sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no service.yaml ubuntu@54.236.58.176:/home/ubuntu"
                     }
                 }
             
@@ -122,16 +124,13 @@ pipeline {
 			  }
             
     }     
-    stage('Copy and Deploy on Production') {
+    stage('Deploy Artifacts to Production') {
             
             steps {
-                  withCredentials([sshUserPrivateKey(credentialsId: "ssh_agent", keyFileVariable: 'keyfile')]){
-                        sh"""
-                        scp -i ${keyfile} -o StrictHostKeyChecking=no deployment.yaml ubuntu@54.236.58.176:/home/ubuntu
-                        scp -i ${keyfile} -o StrictHostKeyChecking=no service.yaml ubuntu@54.236.58.176:/home/ubuntu
-                        ssh -i ${keyfile} -o StrictHostKeyChecking=no ubuntu@54.236.58.176 -C \"kubectl apply -f deployment.yaml\"
-                        ssh -i ${keyfile} -o StrictHostKeyChecking=no ubuntu@54.236.58.176 -C \"kubectl apply -f service.yaml\"
-                        """
+                  sshagent(['ssh_key']) {
+                       
+                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@54.236.58.176 -C \"sudo kubectl apply -f create-k8s-deployment.yaml\""
+                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@54.236.58.176 -C \"sudo kubectl apply -f service.yaml\""
                         
                     }
                 }
