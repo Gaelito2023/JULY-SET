@@ -1,9 +1,9 @@
 pipeline {
   agent any
   tools {
-
+  
   maven 'maven'
-
+   
   }
     stages {
 
@@ -12,26 +12,26 @@ pipeline {
           checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://theitern@bitbucket.org/theitern/class1.git']]])
         }
       }
-
-          stage ('Build')  {
-              steps {
+	  
+	  stage ('Build')  {
+	      steps {
             dir('webapp'){
             sh "pwd"
             sh "ls -lah"
             sh "mvn package"
           }
         }
-
+         
       }
-
+   
      stage ('SonarQube Analysis') {
         steps {
               withSonarQubeEnv('sonar') {
-
-                                dir('webapp'){
+                
+				dir('webapp'){
                  sh 'mvn -U clean install sonar:sonar'
                 }
-
+				
               }
             }
       }
@@ -81,43 +81,62 @@ pipeline {
     }
 
     stage('Copy Dockerfile & Playbook to Ansible Server') {
-
+            
             steps {
                   sshagent(['ssh_agent']) {
-
+                       
                         sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no dockerfile ubuntu@18.206.173.255:/home/ubuntu"
-                        sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no playbook1.yaml ubuntu@18.206.173.255:/home/ubuntu"
+                        sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no create-container-image.yaml ubuntu@18.206.173.255:/home/ubuntu"
                     }
                 }
+            
+        } 
 
-        }
-
-    stage('Copy Deployment & Service Defination to K8s Master') {
-
+    stage('Build Container Image') {
+            
             steps {
                   sshagent(['ssh_key']) {
+                       
+                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@18.206.173.255 -C \"docker commit <container_ID> akinaregbesola/theitern_class_project:latest\""
+                        
+                    }
+                }
+            
+        } 
 
-                        sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no deployment.yaml ubuntu@3.235.54.186:/home/ubuntu"
+    stage('Copy Deployment & Service Defination to K8s Master') {
+            
+            steps {
+                  sshagent(['ssh_key']) {
+                       
+                        sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no create-k8s-deployment.yaml ubuntu@3.235.54.186:/home/ubuntu"
                         sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no service.yaml ubuntu@3.235.54.186:/home/ubuntu"
                     }
                 }
+            
+        } 
 
-        }
+    stage('Waiting for Approvals') {
+            
+        steps{
 
+				input('Test Completed ? Please provide  Approvals for Prod Release ?')
+			  }
+            
+    }     
     stage('Deploy Artifacts to Production') {
-
+            
             steps {
                   sshagent(['ssh_key']) {
-
-                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl apply -f deployment.yaml\""
+                       
+                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl apply -f create-k8s-deployment.yaml\""
                         sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl apply -f service.yaml\""
-
+                        
                     }
                 }
-
-        }
-
-   }
+            
+        } 
+         
+   } 
 }
-
 
