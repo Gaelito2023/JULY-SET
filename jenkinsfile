@@ -86,25 +86,12 @@ pipeline {
                   sshagent(['ssh_agent']) {
 
                         sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no dockerfile ubuntu@18.206.173.255:/home/ubuntu"
-                        sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no create-container-image.yaml ubuntu@18.206.173.255:/home/ubuntu"
+                        sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no playbook1.yaml ubuntu@18.206.173.255:/home/ubuntu"
                     }
                 }
 
         }
 
-<<<<<<< HEAD
-=======
-    stage('Build Container Image') {
-
-            steps {
-                  sshagent(['ssh_key']) {
-                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@18.206.173.255 -C \"sudo ansible-playbook -i hosts create-container-image.yaml\""
-                    }
-                }
-
-        }
-
->>>>>>> c4dce46044b873e58f241272b3417466b362901d
     stage('Copy Deployment & Service Defination to K8s Master') {
 
             steps {
@@ -117,14 +104,6 @@ pipeline {
 
         }
 
-    stage('Waiting for Approvals') {
-
-        steps{
-
-                                input('Test Completed ? Please provide  Approvals for Prod Release ?')
-                          }
-
-    }
     stage('Deploy Artifacts to Production') {
 
             steps {
