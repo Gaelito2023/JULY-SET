@@ -108,7 +108,7 @@ pipeline {
             steps {
                   sshagent(['ssh_key']) {
                        
-                        sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no create-k8s-deployment.yaml ubuntu@3.235.54.186:/home/ubuntu"
+                        sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no deployment.yaml ubuntu@3.235.54.186:/home/ubuntu"
                         sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no service.yaml ubuntu@3.235.54.186:/home/ubuntu"
                     }
                 }
@@ -128,7 +128,7 @@ pipeline {
             steps {
                   sshagent(['ssh_key']) {
                        
-                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl apply -f create-k8s-deployment.yaml\""
+                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl apply -f deployment.yaml\""
                         sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl apply -f service.yaml\""
                         
                     }
@@ -138,4 +138,5 @@ pipeline {
          
    } 
 }
+
 
