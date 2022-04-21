@@ -126,7 +126,7 @@ pipeline {
     stage('Deploy Artifacts to Production') {
             
             steps {
-                  sshagent(['ssh_agent']) {
+                  sshagent(['ssh_key']) {
                        
                         sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl apply -f deployment.yaml\""
                         sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl apply -f service.yaml\""
