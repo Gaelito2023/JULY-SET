@@ -128,8 +128,8 @@ pipeline {
             steps {
                   sshagent(['ssh_key']) {
                        
-                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl apply -f deployment.yaml\""
-                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl apply -f service.yaml\""
+                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@18.206.173.255 -C \"kubectl apply -f deployment.yaml\""
+                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@18.206.173.255 -C \"kubectl apply -f service.yaml\""
                         
                     }
                 }
