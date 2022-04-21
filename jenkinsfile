@@ -91,9 +91,6 @@ pipeline {
                 }
 
         }
-
-<<<<<<< HEAD
-=======
     stage('Build Container Image') {
 
             steps {
@@ -103,8 +100,6 @@ pipeline {
                 }
 
         }
-
->>>>>>> c4dce46044b873e58f241272b3417466b362901d
     stage('Copy Deployment & Service Defination to K8s Master') {
 
             steps {
