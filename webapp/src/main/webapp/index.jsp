@@ -1,4 +1,9 @@
-<h1> This will be the final lap of our practice of DevOps. </h1>
-<h2> Now, we shall be setting up the CI/CD pipeline. </h2>
+<!DOCTYPE html>
+<html>
+<body>
 
+<h1>We have finally come to the end of this session</h1>
+<p>...having spent quality time to repeat tasks severally just to gain good understanding of the concepts.</p>
 
+</body>
+</html>
