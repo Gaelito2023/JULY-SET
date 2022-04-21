@@ -91,7 +91,19 @@ pipeline {
                 }
 
         }
+<<<<<<< HEAD
 
+=======
+    stage('Build Container Image') {
+
+            steps {
+                  sshagent(['ssh_key']) {
+                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@18.206.173.255 -C \"sudo ansible-playbook -i hosts create-container-image.yaml\""
+                    }
+                }
+
+        }
+>>>>>>> a09e34aa259feb6726f4a21f6fc659e64e40c781
     stage('Copy Deployment & Service Defination to K8s Master') {
 
             steps {
