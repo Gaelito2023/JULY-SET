@@ -84,6 +84,7 @@ pipeline {
             
             steps {
                   sshagent(['ssh_agent']) {
+                       sh "chmod 400  DevOps2022KeyPair.pem"
                        sh "ls -lah"
                         sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no dockerfile ubuntu@18.206.173.255:/home/ubuntu"
                         sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no create-container-image.yaml ubuntu@18.206.173.255:/home/ubuntu"
