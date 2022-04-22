@@ -27,7 +27,7 @@
 	      <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-war-plugin</artifactId>
       	<configuration>
-             <webXml>/home/ubuntu/class1/cicd-pipeline/webapp/src/main/webapp/WEB-INF/web.xml</webXml>
+             <webXml>/home/ubuntu/class1/class1/webapp/src/main/webapp/WEB-INF/web.xml</webXml>
             </configuration>
       </plugin>
 
