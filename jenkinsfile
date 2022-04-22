@@ -107,6 +107,7 @@ pipeline {
             
             steps {
                   sshagent(['ssh_key']) {
+			sh ""ls -lah"
                        
                         sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no deployment.yaml ubuntu@3.235.54.186:/home/ubuntu"
                         sh "scp -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no service.yaml ubuntu@3.235.54.186:/home/ubuntu"
