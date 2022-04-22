@@ -52,11 +52,6 @@
         push: yes
         source: local
     
-  - name: Push to docker hub
-    docker_image:
-      name: class_app
-      repository: akinaregbesola/theitern_class_project:latest
-      push: yes
-      source: local
+
 
 
