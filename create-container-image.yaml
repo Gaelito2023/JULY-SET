@@ -40,6 +40,17 @@
         args:
           listen_port: 8080
       source: build
+  
+  - name: Build image and with build args
+    docker_image:
+      name: class_app
+      build:
+        path: /home/ubuntu
+        pull: no
+        args:
+          listen_port: 8080
+      source: build
+
 
   - name: Log into DockerHub
     docker_login:
@@ -51,6 +62,13 @@
         name: class_app
         repository: akinaregbesola/theitern_class_project
         tag: "{{build_number}}"
+        push: yes
+        source: local
+
+  - name: Push to docker hub
+    docker_image:
+        name: class_app
+        repository: akinaregbesola/theitern_class_project
         push: yes
         source: local
     
