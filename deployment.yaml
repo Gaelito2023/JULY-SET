@@ -15,9 +15,11 @@ spec:
       labels:
         app: class-app2
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
       - name: customcontainer
-        image: akinaregbesola/theitern_class_project
+        image: akinaregbesola/theitern_class_project:latest
+        imagePullPolicy: "Always"
         ports:
         - containerPort: 8080
 
