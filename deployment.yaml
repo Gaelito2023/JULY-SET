@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: customcontainer
-        image: akinaregbesola/theitern_class_project:latest
+        image: akinaregbesola/theitern_class_project
         ports:
         - containerPort: 8080
 
