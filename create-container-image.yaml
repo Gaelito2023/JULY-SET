@@ -32,8 +32,8 @@
 
   - name: Build image and with build args
     docker_image:
-      name: akinaregbesola/theitern_class_project:{{build_number}}
-      repository: akinaregbesola/theitern_class_project:latest
+      name: akinaregbesola/theitern_class_project
+      repository: akinaregbesola/theitern_class_project:{{build_number}}
       build:
         path: /home/ubuntu
         pull: no
@@ -51,8 +51,8 @@
 
   - name: Push to docker hub
     docker_image:
-        name: akinaregbesola/theitern_class_project:{{build_number}}
-        repository: akinaregbesola/theitern_class_project:latest
+        name: akinaregbesola/theitern_class_project
+        repository: akinaregbesola/theitern_class_project:{{build_number}}
         force_tag: yes
         push: yes
         source: local
