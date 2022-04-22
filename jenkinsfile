@@ -97,7 +97,7 @@ pipeline {
             
             steps {
                   sshagent(['ssh_key']) {
-                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@18.206.173.255 -C \"ansible-playbook -e build_number=${BUILD_NUMBER} create-container-image.yaml\""
+                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@18.206.173.255 -C \"ansible-playbook  -vvv -e build_number=${BUILD_NUMBER} create-container-image.yaml\""
                         
                     }
                 }
