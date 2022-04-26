@@ -36,7 +36,7 @@
       repository: akinaregbesola/theitern_class_project:{{build_number}}
       build:
         path: /home/ubuntu
-        pull: no
+        pull: yes
         args:
           listen_port: 8080
       source: build
