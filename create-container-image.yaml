@@ -33,7 +33,7 @@
   - name: Build image and with build args
     docker_image:
       name: akinaregbesola/theitern_class_project
-      repository: akinaregbesola/theitern_class_project:{{build_number}}
+#      repository: akinaregbesola/theitern_class_project:{{build_number}}
       build:
         path: /home/ubuntu
         pull: yes
