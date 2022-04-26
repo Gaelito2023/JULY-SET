@@ -41,6 +41,7 @@
           listen_port: 8080
       source: build
       state: present
+      force_tag: yes
   
   
   - name: Log into DockerHub
