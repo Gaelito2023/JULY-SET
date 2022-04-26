@@ -29,6 +29,12 @@
       name: !unsafe tomcat:latest
       source: pull
       force_tag: yes
+      
+       
+  - name: Log into DockerHub
+    docker_login:
+     username: akinaregbesola
+     password: Akin1234#
 
   - name: Build image and with build args
     docker_image:
@@ -36,26 +42,14 @@
       repository: akinaregbesola/theitern_class_project:{{build_number}}
       build:
         path: /home/ubuntu
-        pull: no
+        push: yes
         args:
           listen_port: 8080
       source: build
   
-  
-  - name: Log into DockerHub
-    docker_login:
-     username: akinaregbesola
-     password: Akin1234#
-
  
 
-  - name: Push to docker hub
-    docker_image:
-        name: akinaregbesola/theitern_class_project
-        repository: akinaregbesola/theitern_class_project:{{build_number}}
-        force_tag: yes
-        push: yes
-        source: local
+ 
     
 
 
