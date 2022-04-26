@@ -3,7 +3,7 @@
 <body>
 
 <<<<<<< HEAD
-<h1> HELLO HELLO HELLO. we have finally come to the end of this session</h1>
+<h1> HELLO HELLO. we have finally come to the end of this session</h1>
 =======
 <h1> Now this is the final test </h1>
 </br>
