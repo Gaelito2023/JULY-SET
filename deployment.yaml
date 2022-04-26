@@ -20,6 +20,7 @@ spec:
       labels:
         build_number: ${BUILD_NUMBER}
         app: class-app2
+        role: rolling-update
     spec:
       terminationGracePeriodSeconds: 30
       containers:
