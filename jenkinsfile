@@ -136,7 +136,7 @@ pipeline {
                            if kubectl get deployments | grep class-deploy2
                            then
                               kubectl set image deployment class-deploy2 customcontainer=akinaregbesola/theitern_class_project:${BUILD_NUMBER}
-                              kubectl rollout restart deployment ams
+                              kubectl rollout restart deployment class-deploy2
                            else
                               kubectl apply -f deployment.yaml
                            fi
