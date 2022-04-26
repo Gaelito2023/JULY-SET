@@ -18,6 +18,7 @@ spec:
   template:
     metadata:
       labels:
+        build_number: ${BUILD_NUMBER}
         app: class-app2
     spec:
       terminationGracePeriodSeconds: 30
