@@ -127,10 +127,11 @@ pipeline {
             
             steps {
                   sshagent(['ssh_key']) {
-                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl set image deployment/class-deploy2 customcontainer=akinaregbesola/theitern_class_project:latest\""
+                        sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl set image deployment/class-deploy2 customcontainer=akinaregbesola/theitern_class_project:${BUILD_NUMBER}\""
                         //sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl delete pod class-deploy2\""
                         //sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl apply -f deployment.yaml\""
                         //sh "ssh -i DevOps2022KeyPair.pem -o StrictHostKeyChecking=no ubuntu@3.235.54.186 -C \"kubectl apply -f service.yaml\""
+                        
                     }
                 }
             
