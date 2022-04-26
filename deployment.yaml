@@ -6,7 +6,7 @@ metadata:
   labels:
     app: class-app2
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: class-app2
@@ -18,9 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        build_number: ${BUILD_NUMBER}
         app: class-app2
-        role: rolling-update
     spec:
       terminationGracePeriodSeconds: 30
       containers:
