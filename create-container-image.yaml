@@ -31,8 +31,16 @@
       force_tag: yes
 
   - name: Build image and with build args
-    command: docker build -t imagenewest .
-    
+    docker_image:
+      name: akinaregbesola/theitern_class_project
+      repository: akinaregbesola/theitern_class_project:{{build_number}}
+      build:
+        path: /home/ubuntu
+        args:
+          listen_port: 8080
+      source: pull
+      force_source: yes
+  
   
   - name: Log into DockerHub
     docker_login:
@@ -43,7 +51,7 @@
 
   - name: Push to docker hub
     docker_image:
-        name: akinaregbesola/theitern_class_project:{{build_number}}
+        name: akinaregbesola/theitern_class_project
         repository: akinaregbesola/theitern_class_project:{{build_number}}
         force_tag: yes
         push: yes
