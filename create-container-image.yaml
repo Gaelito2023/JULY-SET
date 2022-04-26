@@ -51,7 +51,7 @@
 
   - name: Push to docker hub
     docker_image:
-        name: akinaregbesola/theitern_class_project
+        name: akinaregbesola/theitern_class_project:latest
         repository: akinaregbesola/theitern_class_project:latest
         force_tag: yes
         push: yes
