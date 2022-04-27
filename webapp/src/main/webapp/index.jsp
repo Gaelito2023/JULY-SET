@@ -1,12 +1,13 @@
-<!DOCTYPE html>
+<!DOCTYPE 
 <html>
+    <Title>Congratulation becoming a DevOps Engineer</Title>
 <body>
 
-<h1> HELLO from ceokin , this a new complete test. we have finally come to the end of this session</h1>
-=======
-<h1> Now this is the final test </h1>
+<h1> Gentlemen, I am happy to inform you that the cicd pipeline is finally working.</h1>
 </br>
-<p>...having spent quality time to repeat tasks severally just to gain good understanding of the concepts.</p>
+<p>...having spent quality time to repeat tasks severally just to gain good understanding of the concepts, every
+    single commit now results in a new build and a new deployment in operations.
+</p>
 
 </body>
 </html>
