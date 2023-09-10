@@ -181,14 +181,5 @@
   <prerequisites>
     <maven>3.0.3</maven>
   </prerequisites>
-	  
-
-  <distributionManagement>
-    <repository>
-        <id>central</id>
-        <name>ip-172-31-92-213.ec2.internal-releases</name>
-        <url>http://54.226.194.168:8082/artifactory/july-set-libs-release-local</url>
-    </repository>
-</distributionManagement>
 
 </project>
