@@ -182,21 +182,13 @@
     <maven>3.0.3</maven>
   </prerequisites>
 
-  <plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-deploy-plugin</artifactId>
-			<version>3.0.0-M1</version>
-		</plugin>
-	</plugins>
-
-
-  <distributionManagement>
+<distributionManagement>
     <repository>
         <id>central</id>
         <name>ip-172-31-16-231.ec2.internal-releases</name>
         <url>http://54.227.81.250:8082/artifactory/libs-release-local</url>
     </repository>
-  </distributionManagement>
+</distributionManagement>
 
 </project>
+        
