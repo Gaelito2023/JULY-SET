@@ -27,7 +27,7 @@
               <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-war-plugin</artifactId>
         <configuration>
-		<webXml>/home/ubuntu/git-project/JULY-SET/webapp/target/WEB-INF\web.xml</webXml>
+		<webXml>/home/ubuntu/git-project/JULY-SET/webapp/src/main/webapp/WEB-INF/web.xml</webXml>
             </configuration>
       </plugin>
 
@@ -186,7 +186,7 @@
     <repository>
         <id>central</id>
         <name>ip-172-31-21-192.ec2.internal-releases</name>
-        <url>http://54.146.207.97:8082/artifactory/july-set-libs-release-local</url>
+        <url>http://34.233.241.105:8082/artifactory/july-set-libs-release-local</url>
     </repository>
 </distributionManagement>
 
